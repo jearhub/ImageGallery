@@ -1,0 +1,87 @@
+﻿@model ImageGallery.Models.Image
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>Edit Photo</h2>
+<hr />
+<head>
+    <style>
+        .detailbox {
+            padding-left: 25%;
+            padding-right: 25%;
+        }
+
+        .detailinfo {
+            align-content: center;
+            padding: 10%;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #e6e6e6;
+            margin-left: -1px;
+            margin-right: -1px;
+            align-content: center;
+            padding: 10%;
+        }
+
+        body {
+            background-image: linear-gradient(to bottom right, #fafafa, white);
+        }
+    </style>
+</head>
+<div class="detailbox">
+    <div class="detailinfo">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImageID" />
+            <div class="form-group">
+                <label asp-for="Caption" class="control-label"></label>
+                <input asp-for="Caption" class="form-control" />
+                <span asp-validation-for="Caption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Created" class="control-label"></label>
+                <input asp-for="Created" class="form-control" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+            <div class="form-group"><img src="~/images/icons/icons8-marker-24.png">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="Url" class="control-label"></label>
+            <input asp-for="Url" class="form-control" />
+            <span asp-validation-for="Url" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Url" class="control-label"></label>
+                <input asp-for="Url" type="file" class="form-control" id="file" name="file" />
+                <span asp-validation-for="Url" class="text-danger"></span>
+                <img id="img-preview" style="max-width: 300px;" class="img img-responsive" src="@Url.Content("~/images/items/" + @Model.Url)">
+            </div>
+            @*<div class="form-group">
+            <label asp-for="UserID" class="control-label"></label>
+            <input asp-for="UserID" class="form-control" />
+            <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="AlbumID" class="control-label"></label>
+                <select asp-for="AlbumID" class="form-control" asp-items="ViewBag.AlbumID"></select>
+                <span asp-validation-for="AlbumID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+                <a asp-action="Index">
+                    <input type="hidden" asp-for="ImageID" name="id" />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -1,0 +1,58 @@
+﻿@model ImageGallery.Models.Album
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Album Details</h2>
+
+<head>
+    <style>
+        .detailbox {
+            padding-left: 25%;
+            padding-right: 25%;
+        }
+
+        .detailinfo {
+            align-content: center;
+            padding: 10%;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #e6e6e6;
+            margin-left: -1px;
+            margin-right: -1px;
+            align-content: center;
+            padding: 10%;
+        }
+
+        body {
+            background-image: linear-gradient(to bottom right, #fafafa, white);
+        }
+    </style>
+</head>
+<div>
+    <hr />
+    <div class="detailbox">
+        <div class="detailinfo" style="background-color:#fafafa; border-radius:8px;">
+            <dl class="dl-horizontal">
+                @*<dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>*@
+                <dd>
+                    <strong>
+                        @Html.DisplayFor(model => model.Title)
+                    </strong>
+                </dd>
+            </dl>
+                    <a asp-action="Edit" asp-route-id="@Model.AlbumID">
+                        <input type="hidden" asp-for="AlbumID" name="id" />
+                        <input type="submit" value="Edit" class="btn btn-default" />
+                    </a>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+

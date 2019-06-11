@@ -1,0 +1,112 @@
+﻿@model ImageGallery.Models.Image
+@using Microsoft.AspNetCore.Http.Extensions
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>Photo Details</h2>
+<hr />
+<head>
+    <style>
+        .detailbox {
+            padding-left: 25%;
+            padding-right: 25%;
+        }
+
+        .detailinfo {
+            align-content: center;
+            padding: 10%;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #e6e6e6;
+            margin-left: -1px;
+            margin-right: -1px;
+            align-content: center;
+            padding: 10%;
+        }
+
+        body {
+            background-image: linear-gradient(to bottom right, #fafafa, white);
+        }
+    </style>
+</head>
+<div class="detailbox">
+    <div class="detailinfo" style="background-color:#fafafa; border-radius:8px;">
+        <dl class="dl-horizontal">
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Caption)
+                </dt>*@
+            <dd>
+                <b>
+                    @Html.DisplayFor(model => model.Caption)
+                </b>
+            </dd>
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Created)
+                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Location)
+                </dt>*@
+            <dd><img src="~/images/icons/icons8-marker-24.png">
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Url)
+                </dt>*@
+        </dl>
+        <dl class="dl-horizontal">
+            <dd>
+                @*@Html.DisplayFor(model => model.Url)*@
+                <img class="img-responsive" src="@Url.Content("~/images/items/" + @Model.Url)" alt="">
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </dt>*@
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>*@
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.Album)
+                </dt>*@
+            <dd>
+                @Html.DisplayFor(model => model.Album.Title)
+            </dd>
+        </dl>
+
+        <div>
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=523745374467031&autoLogAppEvents=1"></script>
+            <div class="fb-share-button" data-href="@Context.Request.GetDisplayUrl().ToString()" data-layout="button" data-size="large">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.instagram.com%2F9thai6%2F%3Fhl%3Dvi&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+            </div>
+            @*<p>@Context.Request.GetDisplayUrl().ToString()</p>*@
+            @if (ViewData["CurrentUserId"] != null)
+            {
+                @if (ViewData["CurrentUserId"].ToString() == @Model.UserID)
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.ImageID">
+                        <input type="hidden" asp-for="ImageID" name="id" />
+                        <input type="submit" value="Edit" class="btn btn-default" />
+                    </a>
+                    <a asp-action="Delete">
+                        <input type="hidden" asp-for="ImageID" name="id" />
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                    </a>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

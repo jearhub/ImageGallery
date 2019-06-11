@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ImageGallery.Models.Album>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Albums</h2>
+
+<p>
+    <a asp-action="Create">
+        <input type="submit" value="Create Album" class="btn btn-default" />
+    </a>
+</p>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AlbumID"><img src="~/images/icons/icons8-pencil-32.png"></a> |
+                <a asp-action="Details" asp-route-id="@item.AlbumID"><img src="~/images/icons/icons8-view-details-filled-32.png"></a> |
+                <a asp-action="Delete" asp-route-id="@item.AlbumID"><img src="~/images/icons/icons8-trash-32.png"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

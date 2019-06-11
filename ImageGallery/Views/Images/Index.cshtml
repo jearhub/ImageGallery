@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ImageGallery.Models.Image>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Photos</h2>
+<p>
+    <a asp-action="Create">
+        <input type="submit" value="Add Photo" class="btn btn-default" />
+    </a>
+</p>
+<head>
+    <style>
+        .detailbox {
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+
+        .detailinfo {
+            align-content: center;
+            padding: 10%;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #e6e6e6;
+            margin-left: -1px;
+            margin-right: -1px;
+            align-content: center;
+           
+        }
+
+        body {
+            background-image: linear-gradient(to bottom right, #fafafa, white);
+        }
+    </style>
+</head>
+
+<div class="detailbox">
+    <div class="detailinfo" style="background-color:#fafafa; border-radius:8px;">
+
+        @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Caption)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Album)
+                </th>
+                <th></th>
+            </tr>
+        </thead>*@
+
+        @foreach (var item in Model)
+        {
+        <dl class="dl-horizontal">
+
+            <dd><strong>
+                @Html.DisplayFor(modelItem => item.Caption)
+            </strong>
+            </dd>
+            <dd><img src="~/images/icons/icons8-marker-24.png">
+                @Html.DisplayFor(modelItem => item.Location)
+            </dd>
+            <dd>
+                @*@Html.DisplayFor(modelItem => item.Url)*@
+                <img class="img-responsive" src="@Url.Content("~/images/items/" + @item.Url)" alt="">
+            </dd>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.Created)
+            </dd>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </dd>
+            <dd>
+                @Html.DisplayFor(modelItem => item.Album.Title)
+            </dd>
+            <dd style="text-align:center;">
+                <a asp-action="Edit" asp-route-id="@item.ImageID"><img src="~/images/icons/icons8-pencil-32.png"></a> |
+                <a asp-action="Details" asp-route-id="@item.ImageID"><img src="~/images/icons/icons8-view-details-filled-32.png"></a> |
+                <a asp-action="Delete" asp-route-id="@item.ImageID"><img src="~/images/icons/icons8-trash-32.png"></a>
+            </dd>
+        </dl>
+            <br>
+        }
+
+        @*
+        <div class="row">
+
+            <div>
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3">
+                        <a asp-action="Details" asp-route-id="@item.ImageID">
+                            <img style="width: 300px; height: 200px; padding: 5px 10px;" src="@Url.Content("~/images/items/" + @item.Url)" alt="Card image cap">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>*@
+    </div>
+</div>

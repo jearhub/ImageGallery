@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAATnmQs00mYUe/pt+HRGQHtQAAAAACAAAAAAAQZgAAAAEAACAAAADKq9y6f69ro1AOVOeR16RqQ/qSPva+opjs6uIz0NNvtwAAAAAOgAAAAAIAACAAAACkuu3rFa8YXKaaJjVZDiaW5uChjw5XesuG7tfB1pO4K4AAAAA2XdD0/P8qI5jNabrqHXwMOooj5N2Ce02vF7Le1Grrz2LOVz8cufkUuCuN8xwYIdSyW/U8HBl17H8EQ6m4tJ4+47zZ9tTtO9ZkMpFVx/ux2qG6Cb4COFAHQ9WRLRxCp44RcZyq7aCubI8FUZf+2Dq1gko2cERzb+E2GVDkipUcXkAAAAAdpcFPiUKt3mwwl2xkwGgCatU24qqNCvEUdqJX4Cuq7esJKyjil3MCAvf76G8CL6rvuYHgFPJ16mN6oUAX+pvc</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:imagegallery20190608043625dbserver.database.windows.net,1433%3bInitial Catalog=ImageGallery20190608043625_db%3bUser Id=ongn02%40imagegallery20190608043625dbserver%3bPassword=Ititiu14086</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="ImageGallery.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:imagegallery20190608043625dbserver.database.windows.net,1433%3bInitial Catalog=ImageGallery20190608043625_db%3bUser Id=ongn02%40imagegallery20190608043625dbserver%3bPassword=Ititiu14086</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

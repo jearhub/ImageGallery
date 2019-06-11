@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ImageGallery.Models.Image>
+@{
+    ViewData["Title"] = "Home";
+}
+<h2>Home</h2>
+
+<div class="row_photo">
+
+    @foreach (var item in Model)
+
+    {
+        <div class="column_photo">
+            <a asp-action="Details" asp-route-id="@item.ImageID">
+                <img  style="width: 300px; height:200px; padding: 5px 20px;" src="@Url.Content("~/images/items/" + @item.Url)" alt="Card image cap">
+            </a>
+        </div>
+    }
+
+</div>
