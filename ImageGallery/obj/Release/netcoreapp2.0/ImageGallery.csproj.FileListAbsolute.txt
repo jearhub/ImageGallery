@@ -10,15 +10,3 @@ C:\Users\Thai\Desktop\ImageGallery\ImageGallery\obj\Release\netcoreapp2.0\ImageG
 C:\Users\Thai\Desktop\ImageGallery\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.AssemblyInfo.cs
 C:\Users\Thai\Desktop\ImageGallery\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.dll
 C:\Users\Thai\Desktop\ImageGallery\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.pdb
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\bin\Release\netcoreapp2.0\ImageGallery.deps.json
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\bin\Release\netcoreapp2.0\ImageGallery.runtimeconfig.json
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\bin\Release\netcoreapp2.0\ImageGallery.runtimeconfig.dev.json
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\bin\Release\netcoreapp2.0\ImageGallery.dll
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\bin\Release\netcoreapp2.0\ImageGallery.pdb
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.csprojAssemblyReference.cache
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.csproj.CoreCompileInputs.cache
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.AssemblyInfoInputs.cache
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.AssemblyInfo.cs
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.dll
-C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\ImageGallery.pdb

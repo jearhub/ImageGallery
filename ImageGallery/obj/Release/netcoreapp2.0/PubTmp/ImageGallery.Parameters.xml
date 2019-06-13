@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="ImageGallery20190608043625" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\jearh\\Desktop\\ImageGallery-master\\ImageGallery\\obj\\Release\\netcoreapp2\.0\\PubTmp\\Out\\$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Thai\\Desktop\\ImageGallery\\ImageGallery\\obj\\Release\\netcoreapp2\.0\\PubTmp\\Out\\$" />
   </parameter>
   <parameter name="ImageGallery.Data.ApplicationDbContext" description="" value="Data Source=tcp:imagegallery20190608043625dbserver.database.windows.net,1433;Initial Catalog=ImageGallery20190608043625_db;User Id=ongn02@imagegallery20190608043625dbserver;Password=Ititiu14086" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\jearh\\Desktop\\ImageGallery-master\\ImageGallery\\obj\\Release\\netcoreapp2\.0\\PubTmp\\EFSQLScripts\\ImageGallery\.Data\.ApplicationDbContext\.sql$" />
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\Thai\\Desktop\\ImageGallery\\ImageGallery\\obj\\Release\\netcoreapp2\.0\\PubTmp\\EFSQLScripts\\ImageGallery\.Data\.ApplicationDbContext\.sql$" />
   </parameter>
 </parameters>

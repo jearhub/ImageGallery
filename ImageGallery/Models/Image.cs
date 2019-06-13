@@ -12,7 +12,7 @@ namespace ImageGallery.Models
         public DateTime Created { get; set; }
         public string Location { get; set; }
         public string Url { get; set; }
-
+        public string Filter { get; set; } = "none";
         public string UserID { get; set; }
         public string UserName { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

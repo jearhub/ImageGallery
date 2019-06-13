@@ -29,18 +29,31 @@ namespace ImageGallery.Controllers
         // GET: Images
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Images.Include(i => i.Album).Where(i => i.UserID == _userManager.GetUserId(User));
+            ViewData["userName"] = _userManager.GetUserName(User);
+
+            var applicationDbContext = _context.Images.Include(i => i.Album).Where(i => i.UserID == _userManager.GetUserId(User)).OrderBy(i => -i.ImageID);
 
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: All Images
         [AllowAnonymous]
-        public async Task<IActionResult> Home()
+        public async Task<IActionResult> Home(int albumId)
         {
-            var applicationDbContext = _context.Images.Include(i => i.Album);
+            ViewData["AlbumID"] = new SelectList(_context.Albums, "AlbumID", "Title");
 
-            return View(await applicationDbContext.ToListAsync());
+            if (albumId == 0)
+            {
+                var applicationDbContext = _context.Images.Include(i => i.Album).OrderBy(i => -i.ImageID);
+
+                return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                var applicationDbContext = _context.Images.Where(i => i.AlbumID == albumId).Include(i => i.Album).OrderBy(i => -i.ImageID);
+
+                return View(await applicationDbContext.ToListAsync());
+            }
         }
 
         // GET: Images/Details/5
@@ -77,7 +90,7 @@ namespace ImageGallery.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ImageID,Caption,Location,AlbumID")] Image image, IFormFile file)
+        public async Task<IActionResult> Create([Bind("ImageID,Caption,Location,Filter,AlbumID")] Image image, IFormFile file)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +106,7 @@ namespace ImageGallery.Controllers
                     {
                         await file.CopyToAsync(fileStream);
                     }
+
                     image.Url = fileName;
                     image.UserID = userId;
                     image.UserName = userName;
@@ -129,46 +143,58 @@ namespace ImageGallery.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ImageID,Caption,Created,Location,AlbumID")] Image image, IFormFile file)
+        public async Task<IActionResult> Edit(int id, [Bind("ImageID,Caption,Created,Location,Url,UserID,UserName,Filter,AlbumID")] Image image, IFormFile file)
         {
             if (id != image.ImageID)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if(file == null)
             {
-                try
-                {
-                    var userId = _userManager.GetUserId(User);
-                    if (file != null && file.Length > 0)
-                    {
-                        var fileName = Path.GetFileName(file.FileName);
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\items", fileName);
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await file.CopyToAsync(fileStream);
-                        }
-                        image.Url = fileName;
-                        image.UserID = userId;
-                    }
+                
+                _context.Update(image);
+                await _context.SaveChangesAsync();
 
-                    _context.Update(image);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ImageExists(image.ImageID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        var userId = _userManager.GetUserId(User);
+                        if (file != null && file.Length > 0)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\items", fileName);
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await file.CopyToAsync(fileStream);
+                            }
+                            image.Url = fileName;
+                            image.UserID = userId;
+                        }
+
+                        _context.Update(image);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!ImageExists(image.ImageID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            
             ViewData["AlbumID"] = new SelectList(_context.Albums, "AlbumID", "Title", image.AlbumID);
             return View(image);
         }
@@ -201,6 +227,12 @@ namespace ImageGallery.Controllers
             _context.Images.Remove(image);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult Filter()
+        {
+            ViewData["Filter"] = "grayscale(100%);";
+            return null;
         }
 
         private bool ImageExists(int id)

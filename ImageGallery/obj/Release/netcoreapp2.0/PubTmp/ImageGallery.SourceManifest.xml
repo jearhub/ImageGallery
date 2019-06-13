@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\PubTmp\Out\" />
-  <dbfullsql path="C:\Users\jearh\Desktop\ImageGallery-master\ImageGallery\obj\Release\netcoreapp2.0\PubTmp\EFSQLScripts\ImageGallery.Data.ApplicationDbContext.sql" />
+  <IisApp path="C:\Users\Thai\Desktop\ImageGallery\ImageGallery\obj\Release\netcoreapp2.0\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\Thai\Desktop\ImageGallery\ImageGallery\obj\Release\netcoreapp2.0\PubTmp\EFSQLScripts\ImageGallery.Data.ApplicationDbContext.sql" />
 </sitemanifest>

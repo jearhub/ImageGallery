@@ -13525,11 +13525,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jearh\\Desktop\\ImageGallery\\ImageGallery\\ImageGallery.csproj",
+      "projectUniqueName": "C:\\Users\\jearh\\Downloads\\ImageGallery-master\\ImageGallery-master\\ImageGallery\\ImageGallery.csproj",
       "projectName": "ImageGallery",
-      "projectPath": "C:\\Users\\jearh\\Desktop\\ImageGallery\\ImageGallery\\ImageGallery.csproj",
+      "projectPath": "C:\\Users\\jearh\\Downloads\\ImageGallery-master\\ImageGallery-master\\ImageGallery\\ImageGallery.csproj",
       "packagesPath": "C:\\Users\\jearh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jearh\\Desktop\\ImageGallery\\ImageGallery\\obj\\",
+      "outputPath": "C:\\Users\\jearh\\Downloads\\ImageGallery-master\\ImageGallery-master\\ImageGallery\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
